@@ -2,4 +2,18 @@ doctype html
 head
     title Game Of Life
 body
-    h1 Welcome to Game Of Life
+    .app-gof
+        header 
+            h2 Conway's Game Of Life
+        canvas(id="c1",width="880px",height="400px")
+        .dashbord
+            .controls-left
+                button.stop Stop
+                button Play
+                button Clear
+            .output 
+                p Generation
+                .count 0
+            .controls-right
+                button Random
+                button.patterns Patterns
