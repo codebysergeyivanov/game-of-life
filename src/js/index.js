@@ -7,11 +7,8 @@ import Controller from "./controller";
 
 
 
-let model = new Model();
-model.createInitialState();
-model.createRandomState();
-model.play();
+// let view = new View();
+// view.drawGrid();
 
-
-let view = new View();
-view.drawGrid();
+let controller =  new Controller();
+document.addEventListener("click", controller.handleClick)

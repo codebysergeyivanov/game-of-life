@@ -1,3 +1,6 @@
+import View from "./view";
+const view = new View();
+
 export default class Model {
     constructor() {
         this.state = [];
@@ -16,11 +19,12 @@ export default class Model {
     createRandomState() {
         for(let i = 0; i < 20; i++){
             for(let j = 0; j < 44; j++) {
-                if(Math.random() < 0.5) {
+                if(Math.random() < 0.3) {
                     this.state[i][j] = true;
                 }                
             }
         }
+        view.drawField(this.state);
     }
 
     createCustomState(e) {
@@ -28,14 +32,19 @@ export default class Model {
         let y = e.offsetY;
         x = Math.floor(x / 20);
         y = Math.floor(y / 20);
+        if(this.state[y][x]) {
+            this.state[y][x] = false;
+            view.drawField(this.state);
+            return;
+        }
         this.state[y][x] = true;
-        //drawField();
+        view.drawField(this.state);
     }
 
     clear() {
         clearTimeout(this.timer);
         this.timer = null;
-        //clearField(); //View
+        view.clearField();
         this.createInitialState();
     }
 
@@ -45,7 +54,7 @@ export default class Model {
     }
 
     play() {
-        // claerFied();
+        view.clearField();
         let animadedState = []
         for (let i = 0; i < 20; i++){
             animadedState[i] = [];
@@ -81,8 +90,9 @@ export default class Model {
             }
         }
         this.state = animadedState;
-        // draw
-        // this.timer = setTimeout(this.play, 100)
+        
+        view.drawField(this.state);
+        this.timer = setTimeout(this.play, 100)
     }
     _checkDownRow(val) {
         if(val == 19) return 0;
