@@ -5,7 +5,8 @@ body
     .app-gof
         header 
             h2 Conway's Game Of Life
-        canvas(id="c1",width="880px",height="400px")
+        .canvas-group
+            canvas(id="c1",width="880px",height="400px")
         .dashbord
             .controls-left
                 button.stop Stop
@@ -13,7 +14,7 @@ body
                 button.clear Clear
             .output 
                 h3 Generation
-                .count 0
+                .iterator-count 0
             .controls-right
                 button.random Random
                 button.patterns Patterns

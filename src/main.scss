@@ -19,19 +19,44 @@ header {
     background-color: black;
     height: 50px;
     border-radius: 30px 30px 0 0;
-    color: green;
+    color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: gof 1s linear infinite alternate both;
+}
+
+@keyframes gof {
+    from {
+        text-shadow: 5px 5px 10px green, -5px -5px 10px rgba(37, 233, 37, 1);
+    }
+    to {
+        text-shadow: 5px 5px 10px green, -5px -5px 10px rgba(37, 233, 37, 0);
+    }
+}
+
+.canvas-group {
+    position: relative;
+    width: 880px;
+    height: 400px;
+    margin-left: 10px;
+    z-index: 0;
 }
 
 canvas {
-    margin-left: 10px;
+    position: absolute;
+    left: 0;
+    top: 0;
     background-color: transparent;
     display: block;
+    z-index: 1;
 }
 
 .layer-c {
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 0;
     background-color: rgb(22, 22, 22);
     display: block;
   }
@@ -46,7 +71,7 @@ canvas {
 
 }
 
-button {
+.dashbord button {
     display: block;
     margin-left: 5px;
     font-weight: 700;
@@ -56,19 +81,17 @@ button {
     outline: none;
     padding: 20px;
     border-radius: 3px;
+    transition: 1s;
     &:hover {
         background: rgb(146, 233, 146);
     }
-    &:focus {
-        background: rgb(8, 88, 8);
-    }
 }
 
-button.stop {
+.dashbord button.stop {
     padding-left: 30px;
     border-radius: 3px 3px 3px 60px;
 }
-button.patterns {
+.dashbord button.patterns {
     padding-right: 30px;
     border-radius: 3px 3px 60px 3px;
 }
@@ -100,7 +123,7 @@ button.patterns {
         transform: rotateX(-25deg);
 
     }
-    .count {
+    .iterator-count {
         margin-top: 2px;
         padding: 2px 40px;
         background: rgb(172, 243, 166);
@@ -116,4 +139,36 @@ button.patterns {
     justify-content: center;
     align-items: center;
     padding: 5px;
+}
+
+.list-patterns {
+    width: 250px;
+    background-color: black;
+    margin-top: -120px;
+    margin-left: auto;
+    margin-right: auto;
+    transition-property: all;
+    transition-duration: 1s;
+    z-index: -1;
+}
+.open {
+    margin-top: 6px;
+}
+.close {
+    margin-top: -120px;
+}
+
+.list-patterns button {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    background: transparent;
+    color: green;
+    text-transform: uppercase;
+    font: 700 18px Arial, sans-serif;
+    outline: none;
+    border: none;
+    &:hover {
+        border-bottom: 1px solid green;    
+    }
 }
