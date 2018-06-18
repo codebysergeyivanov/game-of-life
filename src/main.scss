@@ -1,17 +1,19 @@
+//@import url('https://fonts.googleapis.com/css?family=Shrikhand');
+@import url('https://fonts.googleapis.com/css?family=Encode+Sans+Semi+Expanded:700|Shrikhand');
+
 body {
     text-align: center;
-    font-family: Arial, sans-serif;
-    background: rgb(222, 233, 222);
+    font-family: "Arial", "Helvetica", sans-serif;
+    background: linear-gradient(rgb(12, 151, 12), lightgreen);
+    overflow-y: scroll;
+    height: 800px;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-}
-
-.app-gof {
-    margin: 60px auto;
+#app-gof {
+    margin: 20px auto;
     width: 900px;
+    text-align: center;
+    font-family: "Encode Sans Semi Expanded", "Arial", "Helvetica", sans-serif;
 }
 
 header {
@@ -19,6 +21,7 @@ header {
     background-color: black;
     height: 50px;
     border-radius: 30px 30px 0 0;
+    font-family: 'Shrikhand', cursive;
     color: #fff;
     display: flex;
     justify-content: center;
@@ -28,10 +31,10 @@ header {
 
 @keyframes gof {
     from {
-        text-shadow: 5px 5px 10px green, -5px -5px 10px rgba(37, 233, 37, 1);
+        text-shadow: 5px 5px 10px rgba(37, 233, 37, 1), -5px -5px 10px rgba(37, 233, 37, 1);
     }
     to {
-        text-shadow: 5px 5px 10px green, -5px -5px 10px rgba(37, 233, 37, 0);
+        text-shadow: 5px 5px 10px rgba(37, 233, 37, 0), -5px -5px 10px rgba(37, 233, 37, 0);
     }
 }
 
@@ -47,13 +50,14 @@ canvas {
     position: absolute;
     left: 0;
     top: 0;
-    background-color: transparent;
     display: block;
     z-index: 1;
+    background-color: transparent;  
 }
 
 .layer-c {
     position: absolute;
+    display: block;
     z-index: -1;
     left: 0;
     top: 0;
@@ -62,13 +66,12 @@ canvas {
   }
 
 .dashbord {
-    border-top: 5px solid green;
     display: flex;
     justify-content: space-between;
-    background-color: black;
-    border-radius: 0 0 60px 60px;
     height: 80px;
-
+    border-top: 5px solid green;
+    border-radius: 0 0 60px 60px;
+    background-color: black;
 }
 
 .dashbord button {
@@ -102,10 +105,10 @@ canvas {
     height: 100px;
     margin-top: -15px;
     z-index: 1;
-    color: white;
+    color: green;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     font-weight: 700;
     perspective: 500px;
@@ -113,6 +116,7 @@ canvas {
     &:after {
         position: absolute;
         top: 0;
+        left: 0;
         z-index: -1;
         content: "";
         width: 100%;
@@ -124,11 +128,12 @@ canvas {
 
     }
     .iterator-count {
-        margin-top: 2px;
-        padding: 2px 40px;
+        margin-top: -15px;
+        width: 100px;
+        padding: 2px 0;
         background: rgb(172, 243, 166);
         color: black;
-        box-shadow: inset 3px 3px 5px rgba(0,0,0,0.8);
+        box-shadow: inset 3px 3px 5px rgba(0,0,0,0.5);
     }
 }
 
@@ -165,10 +170,11 @@ canvas {
     background: transparent;
     color: green;
     text-transform: uppercase;
-    font: 700 18px Arial, sans-serif;
+    font-weight: 700;
     outline: none;
     border: none;
+    transition: 1s;
     &:hover {
-        border-bottom: 1px solid green;    
+        color: rgb(172, 243, 166);
     }
 }

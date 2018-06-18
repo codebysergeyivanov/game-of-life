@@ -6,15 +6,17 @@ class Controller {
         this.handleLoad = this.handleLoad.bind(this);
         this.handleClick = this.handleClick.bind(this);
     }
+
     handleLoad() {
         this.view.drawGrid();
-        this.model.createInitialState();
-        this.model.createRandomState();
+        this.model.toInitialState();
+        this.model.toRandomState();
         this.model.play();
     }
+
     handleClick(e) {
         if(e.target.closest('#c1')) {
-            this.model.createCustomState(e);
+            this.model.toCustomState(e);
         }
 
         if(e.target.closest(".play")) {
@@ -31,7 +33,7 @@ class Controller {
         }
 
         if(e.target.closest(".random")) {
-            this.model.createRandomState();
+            this.model.toRandomState();
         }
 
         if(e.target.closest(".patterns")) {
@@ -39,19 +41,19 @@ class Controller {
         }
 
         if(e.target.closest(".pulsar")) {
-            this.model.createPulsar();
+            this.model.toPulsarState();
         }
 
         if(e.target.closest(".baby-pulsar")){
-            this.model.createBabyPulsar();
+            this.model.toBabyPulsarState();
         }
 
         if(e.target.closest(".pentadecathlon")) {
-            this.model.createPentadecathlon();
+            this.model.toPentadecathlonState();
         }
 
         if(e.target.closest(".glider-gun")) {
-            this.model.createGliderGun();
+            this.model.toGliderGunState();
         }
     }
 }

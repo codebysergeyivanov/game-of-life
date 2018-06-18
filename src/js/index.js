@@ -1,13 +1,24 @@
+import '../../node_modules/normalize.scss/normalize.scss';
 import "../main.scss";
 
 import Model from "./model";
 import View from "./view";
 import Controller from "./controller";
 
- let view = new View();
- let model = new Model(view);
+const view = new View();
+const model = new Model(view);
 
-let controller =  new Controller(model, view);
+const controller =  new Controller(model, view);
 
-document.addEventListener("DOMContentLoaded", controller.handleLoad)
-document.addEventListener("click", controller.handleClick)
+const app = {
+    init() {
+        this.event();
+    },
+    event() {
+        const app = document.getElementById("app-gof");
+        document.addEventListener("DOMContentLoaded", controller.handleLoad)
+        app.addEventListener("click", controller.handleClick);
+    }
+}
+
+app.init();
