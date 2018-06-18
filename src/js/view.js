@@ -65,7 +65,7 @@ export default class View {
 
       setTimeout(function() {
         self.patterns.classList.add("open");
-      }, 0);   
+      }, 4);   
       return;
     }
     
