@@ -16,12 +16,25 @@ class Controller {
 
     handleClick(e) {
         if(e.target.closest('#c1')) {
-            this.model.toCustomState(e);
+            const state = this.model.toCustomState(e);
+            this.view.drawField(state);
         }
 
         if(e.target.closest(".play")) {
             if(this.model.timer) return;
-            this.model.play();
+   
+            const state = this.model.play();
+            this.view.clearField();
+            this.view.showIteratorCount(this.model.iteratorCount);
+            this.view.drawField(state);
+
+             this.model.timer = setInterval(() => {
+                const state = this.model.play();
+                this.view.clearField();
+                this.view.showIteratorCount(this.model.iteratorCount);
+                this.view.drawField(state);
+             }, 100)
+  
         }
 
         if(e.target.closest(".stop")) {
@@ -30,10 +43,13 @@ class Controller {
 
         if(e.target.closest(".clear")) {
             this.model.clear();
+            this.view.showIteratorCount(0);
+            this.view.clearField();
         }
 
         if(e.target.closest(".random")) {
-            this.model.toRandomState();
+            const state = this.model.toRandomState();
+            this.view.drawField(state);
         }
 
         if(e.target.closest(".patterns")) {
@@ -41,19 +57,27 @@ class Controller {
         }
 
         if(e.target.closest(".pulsar")) {
-            this.model.toPulsarState();
+            const state = this.model.toPulsarState();
+            this.view.showIteratorCount(0);
+            this.view.drawField(state);
         }
 
         if(e.target.closest(".baby-pulsar")){
-            this.model.toBabyPulsarState();
+            const state = this.model.toBabyPulsarState();
+            this.view.showIteratorCount(0);
+            this.view.drawField(state);
         }
 
         if(e.target.closest(".pentadecathlon")) {
-            this.model.toPentadecathlonState();
+            const state = this.model.toPentadecathlonState();
+            this.view.showIteratorCount(0);
+            this.view.drawField(state);
         }
 
         if(e.target.closest(".glider-gun")) {
-            this.model.toGliderGunState();
+            const state = this.model.toGliderGunState();
+            this.view.showIteratorCount(0);
+            this.view.drawField(state);
         }
     }
 }

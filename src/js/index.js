@@ -6,7 +6,7 @@ import View from "./view";
 import Controller from "./controller";
 
 const view = new View();
-const model = new Model(view);
+const model = new Model();
 
 const controller =  new Controller(model, view);
 
