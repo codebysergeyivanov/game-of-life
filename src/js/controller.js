@@ -11,7 +11,21 @@ class Controller {
         this.view.drawGrid();
         this.model.toInitialState();
         this.model.toRandomState();
-        this.model.play();
+        this._go();
+    }
+
+    _go() {
+        const state = this.model.play();
+            this.view.clearField();
+            this.view.showIteratorCount(this.model.iteratorCount);
+            this.view.drawField(state);
+
+             this.model.timer = setInterval(() => {
+                const state = this.model.play();
+                this.view.clearField();
+                this.view.showIteratorCount(this.model.iteratorCount);
+                this.view.drawField(state);
+             }, 100)
     }
 
     handleClick(e) {
@@ -23,17 +37,7 @@ class Controller {
         if(e.target.closest(".play")) {
             if(this.model.timer) return;
    
-            const state = this.model.play();
-            this.view.clearField();
-            this.view.showIteratorCount(this.model.iteratorCount);
-            this.view.drawField(state);
-
-             this.model.timer = setInterval(() => {
-                const state = this.model.play();
-                this.view.clearField();
-                this.view.showIteratorCount(this.model.iteratorCount);
-                this.view.drawField(state);
-             }, 100)
+            this._go();
   
         }
 
